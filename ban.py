@@ -20,7 +20,7 @@ from var import Var
 
 logging.basicConfig(level=logging.INFO)
 
-print("Starting.....")
+print("KARA BÜYÜ BAŞLIYOR.....")
 
 Riz = TelegramClient('Riz', Var.API_ID, Var.API_HASH).start(bot_token=Var.BOT_TOKEN)
 
@@ -44,7 +44,7 @@ async def ping(e):
 async def testing(event):
   if event.sender_id in SUDO_USERS:
    if not event.is_group:
-        Reply = f"Noob !! Use This Cmd in Group."
+        Reply = f"Ezik !! Bu Cmd'yi Grupta Kullan."
         await event.reply(Reply, parse_mode=None, link_preview=None )
    else:
        await event.delete()
@@ -53,9 +53,9 @@ async def testing(event):
        admin = RiZoeL.admin_rights
        creator = RiZoeL.creator
        if not admin and not creator:
-           await event.reply("I Don't have sufficient Rights !!")
+           await event.reply("Yeterli Haklarım Yok !!")
            return
-       await event.reply("hey !! I'm alive")
+       await event.reply("hey !! hayattayım")
        everyone = await event.client.get_participants(event.chat_id)
        for user in everyone:
            if user.id == RiZoeLop.id:
@@ -74,7 +74,7 @@ async def _(e):
         if len(e.text) > 7:
             bc = rizoel[0]
             bc = int(bc)
-            text = "Leaving....."
+            text = "Ben kaçar....."
             event = await e.reply(text, parse_mode=None, link_preview=None )
             try:
                 await event.client(LeaveChannelRequest(bc))
@@ -83,7 +83,7 @@ async def _(e):
                 await event.edit(str(e))   
         else:
             bc = e.chat_id
-            text = "Leaving....."
+            text = "Ben kaçar....."
             event = await e.reply(text, parse_mode=None, link_preview=None )
             try:
                 await event.client(LeaveChannelRequest(bc))
@@ -96,7 +96,7 @@ async def _(e):
 @Riz.on(events.NewMessage(pattern="^/restart"))
 async def restart(e):
     if e.sender_id in SUDO_USERS:
-        text = "__Restarting__ !!!"
+        text = "__Yeniden başlatma__ !!!"
         await e.reply(text, parse_mode=None, link_preview=None )
         try:
             await Riz.disconnect()
@@ -107,6 +107,6 @@ async def restart(e):
 
 
 print("\n\n")
-print("Bot Started")
+print("Bot başladı.")
 
 Riz.run_until_disconnected()
